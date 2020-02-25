@@ -1,0 +1,31 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.nav-pills .nav-link {
+	background-color: #e0e0e0;
+	margin: 0 5px;
+	color: #fff;
+}
+
+img {
+	max-width: 100%;
+}
+
+form {
+
+	small {
+		display: block;
+		color: #3490db;
+	}
+
+	.amenityList {
+		background-color: #eceff1;
+		padding: 20px;
+	}
+}	
