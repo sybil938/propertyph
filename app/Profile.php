@@ -22,4 +22,9 @@ class Profile extends Model
 		'valid_id'
 	];
 
+
+	public function role_id(){
+        return $this->belongsTo('App\Meta', 'role_id');
+	}
+
 }

@@ -5,7 +5,7 @@
 
         <div class="row pb-3">
             <div class="col-md-12">
-                <h5>PROPERTY</h5>
+                <h5>HOUSE PROPERTY FORM</h5>
                 <hr>
             </div>
         </div> 
@@ -154,18 +154,6 @@
                     <option value="4000">4,000</option>
                     <option value="5000">5,000</option>
                 </select>     
-            </div>  
-        </div> 
-
-        <div class="row pb-4">           
-            <div class="col">
-                <label for="electric_bill">Electric Bill</label>
-                <input type="number" name="electric_bill" class="form-control" value="" placeholder="Enter Amount">
-            </div>    
-
-            <div class="col">
-                <label for="water_bill">Water Bill</label>
-                <input type="number" name="water_bill" class="form-control" value="" placeholder="Enter Amount">
             </div>  
         </div> 
 

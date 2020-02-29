@@ -25,7 +25,8 @@ class CreateUserProfilesTable extends Migration
             $table->text('province')->nullable();
             $table->text('postal_code')->nullable();
             $table->text('country')->nullable();
-            $table->text('valid_id')->nullable();             
+            $table->longText('image')->nullable();
+            $table->longText('image_id')->nullable();      
             $table->timestamps();
         });
     }

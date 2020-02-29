@@ -4,9 +4,12 @@
     <div class="container">
         <div class="row pb-3">
             <div class="col-md-12">
-                <ul class="nav nav-pills nav-justified mb-4" id="pills-tab" role="tablist">
+                <ul id="pills-tab" class="nav nav-pills mb-4" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-apartment-tab" data-toggle="pill" href="#pills-apartment" role="tab" aria-controls="pills-apartment" aria-selected="true">APARTMENT</a>
+                        <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">ALL PROPERTIES</a>
+                    </li>                    
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-apartment-tab" data-toggle="pill" href="#pills-apartment" role="tab" aria-controls="pills-apartment" aria-selected="false" onclick="apartmentTable()">APARTMENT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="pills-condominium-tab" data-toggle="pill" href="#pills-condominium" role="tab" aria-controls="pills-condominium" aria-selected="false" onclick="condoTable()">CONDOMINIUM</a>
@@ -24,7 +27,20 @@
         <div class="row pb-5">
             <div class="col-md-12">
                 <div class="tab-content pt-2 pl-1" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-apartment" role="tabpanel" aria-labelledby="pills-apartment-tab">
+                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+                        <table class="table table-bordered" id="dataTableAll">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>City</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table> 
+                    </div>                    
+                    <div class="tab-pane fade" id="pills-apartment" role="tabpanel" aria-labelledby="pills-apartment-tab-tab">
                         <table class="table table-bordered" id="dataTableApartment">
                             <thead>
                                 <tr>
@@ -36,7 +52,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                        </table> 
+                        </table>                                                        
                     </div>
                     <div class="tab-pane fade" id="pills-condominium" role="tabpanel" aria-labelledby="pills-condominium-tab">
                         <table class="table table-bordered" id="dataTableCondo">
@@ -93,22 +109,41 @@
 
 @section('scripts')
 <script text="text/javascript">
+
     window.addEventListener('load', function() {
-        $("#dataTableApartment").DataTable({
+        $("#dataTableAll").DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ url('properties') }}",
             columns: [              
                 {data: 'name', name: 'name'},
-                {data: 'unit_number', name: 'unit_number'},
-                {data: 'street', name: 'street'},
-                {data: 'province', name: 'province'},
+                {data: 'type', name: 'type'},
+                {data: 'status', name: 'status'},
                 {data: 'city', name: 'city'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             "order": [[ 1, "desc" ]]
         });     
     }); 
+
+    function apartmentTable() {
+        if (!$.fn.dataTable.isDataTable('#dataTableCondo')) {   
+            $("#dataTableApartment").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ url('properties/apartment') }}",
+                columns: [              
+                    {data: 'name', name: 'name'},
+                    {data: 'unit_number', name: 'unit_number'},
+                    {data: 'street', name: 'street'},
+                    {data: 'province', name: 'province'},
+                    {data: 'city', name: 'city'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ],
+                "order": [[ 1, "desc" ]]
+            });     
+        }
+    }    
         
     function condoTable() {
         if (!$.fn.dataTable.isDataTable('#dataTableCondo')) {    

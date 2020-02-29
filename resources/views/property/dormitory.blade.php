@@ -5,7 +5,7 @@
 
         <div class="row pb-3">
             <div class="col-md-12">
-                <h5>PROPERTY</h5>
+                <h5>DORMITORY PROPERTY FORM</h5>
                 <hr>
             </div>
         </div> 

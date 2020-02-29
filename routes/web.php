@@ -13,6 +13,14 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::group(['prefix' => 'properties'], function(){	
+	//VIEW ITEM
+	Route::get('/apartment/{id}/view', 'ApartmentController@apartmentView');
+	Route::get('/condominium/{id}/view', 'CondominiumController@condoView');
+	Route::get('/dormitory/{id}/view', 'DormitoryController@dormView');
+	Route::get('/house/{id}/view', 'HouseController@houseView');
+});
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
@@ -25,27 +33,28 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'properties'], function(){	
 		Route::get('/', 'PropertyController@index');
 		//DATATABLE
-		Route::get('/', 'PropertyController@apartment');
+		Route::get('/', 'PropertyController@allProp');
+		Route::get('/apartment', 'PropertyController@apartment');
 		Route::get('/condominium', 'PropertyController@condominium');
 		Route::get('/dormitory', 'PropertyController@dormitory');
 		Route::get('/house', 'PropertyController@house');
-		//VIEW ITEM
-		Route::get('/apartment/{id}/view', 'PropertyController@apartmentView');
-		Route::get('/condominium/{id}/view', 'PropertyController@condoView');
-		Route::get('/dormitory/{id}/view', 'PropertyController@dormView');
-		Route::get('/house/{id}/view', 'PropertyController@houseView');
-		//VIEW EDIT ITEM
-		Route::get('/apartment/{id}/edit', 'PropertyController@apartmentEditView');
-		Route::post('/apartment/{id}/edit', 'PropertyController@apartmentEdit');		
-		Route::get('/condominium/{id}/edit', 'PropertyController@condoEditView');
-		Route::post('/condominium/{id}/edit', 'PropertyController@condoEdit');	
-		Route::get('/dormitory/{id}/edit', 'PropertyController@dormEditView');
-		Route::post('/dormitory/{id}/edit', 'PropertyController@dormEdit');	
-		Route::get('/house/{id}/edit', 'PropertyController@houseEditView');
-		Route::post('/house/{id}/edit', 'PropertyController@houseEdit');					
 		//ADD PROPERTY
 		Route::get('/create', 'PropertyController@create');
-		Route::post('/create', 'PropertyController@addProperty');
+		Route::post('/create', 'PropertyController@add');
+		//DELETE PROPERTY	
+		Route::get('/apartment/{id}', 'ApartmentController@remove');
+		Route::get('/condominium/{id}', 'CondominiumController@remove');
+		Route::get('/dormitory/{id}', 'DormitoryController@remove');
+		Route::get('/house/{id}', 'HouseController@remove');					
+		//VIEW|EDIT PROPERTY
+		Route::get('/apartment/{id}/edit', 'ApartmentController@apartmentEditView');
+		Route::post('/apartment/{id}/edit', 'ApartmentController@apartmentEdit');		
+		Route::get('/condominium/{id}/edit', 'CondominiumController@condoEditView');
+		Route::post('/condominium/{id}/edit', 'CondominiumController@condoEdit');	
+		Route::get('/dormitory/{id}/edit', 'DormitoryController@dormEditView');
+		Route::post('/dormitory/{id}/edit', 'DormitoryController@dormEdit');	
+		Route::get('/house/{id}/edit', 'HouseController@houseEditView');
+		Route::post('/house/{id}/edit', 'HouseController@houseEdit');	
 	});
 
 });

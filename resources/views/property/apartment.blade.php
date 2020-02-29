@@ -5,7 +5,7 @@
 
         <div class="row pb-3">
             <div class="col-md-12">
-                <h5>PROPERTY</h5>
+                <h5>APARTMENT PROPERTY FORM</h5>
                 <hr>
             </div>
         </div> 
@@ -71,7 +71,7 @@
 
         <div class="row pb-4">           
             <div class="col">
-                <label for="units">Number of units in the indicated address:</label>
+                <label for="units">Number of Rooms:</label>
                 <input type="number" name="units" class="form-control" value="">
             </div>    
 
@@ -117,7 +117,7 @@
 
         <div class="row pb-3">
             <div class="col-md-12">
-                <h5>BILLING</h5>
+                <h5>BILLING <span class="float-right">(PHP)</span></h5>
                 <hr>
             </div>
         </div>          
@@ -125,60 +125,29 @@
         <div class="row pb-4">           
             <div class="col">
                 <label for="monthly_rental">Monthly Rental</label>
-                <input type="number" name="monthly_rental" class="form-control" value="" placeholder="Enter Amount">
+                <input type="text" name="monthly_rental" class="form-control currency" value="" placeholder="Enter Amount">
             </div>    
-
             <div class="col"></div>  
         </div> 
 
         <div class="row pb-4">           
             <div class="col">
                 <label for="deposit">Deposit</label>
-                <select name="deposit" class="form-control">
-                    <option value="" disabled selected>Enter Amount</option>
-                    <option value="1000">1,000</option>
-                    <option value="2000">2,000</option>
-                    <option value="3000">3,000</option>
-                    <option value="4000">4,000</option>
-                    <option value="5000">5,000</option>
-                </select>               
+                <input type="text" name="deposit" class="form-control currency" value="" placeholder="Enter Amount">
             </div>    
 
             <div class="col">
                 <label for="advance">Advance</label>
-                <select name="advance" class="form-control">
-                    <option value="" disabled selected>Enter Amount</option>
-                    <option value="1000">1,000</option>
-                    <option value="2000">2,000</option>
-                    <option value="3000">3,000</option>
-                    <option value="4000">4,000</option>
-                    <option value="5000">5,000</option>
-                </select>     
+                <input type="text" name="advance" class="form-control currency" value="" placeholder="Enter Amount">    
             </div>  
         </div> 
 
-        <div class="row pb-4">           
-            <div class="col">
-                <label for="electric_bill">Electric Bill</label>
-                <input type="number" name="electric_bill" class="form-control" value="" placeholder="Enter Amount">
-            </div>    
-
-            <div class="col">
-                <label for="water_bill">Water Bill</label>
-                <input type="number" name="water_bill" class="form-control" value="" placeholder="Enter Amount">
-            </div>  
-        </div> 
-
-        <div class="row pb-4">           
-            <div class="col">
-                <label for="other_payments">Other Payments</label>
-                <input type="number" name="other_payments" class="form-control" value="" placeholder="Enter Amount">
-            </div>    
-
+        <div class="row pb-4">  
             <div class="col">
                 <label for="penalty">Penalty</label>
-                <input type="number" name="penalty" class="form-control" value="" placeholder="Enter Amount">
+                <input type="text" name="penalty" class="form-control currency" value="" placeholder="Enter Amount">
             </div>  
+            <div class="col"></div>  
         </div> 
 
 
@@ -193,3 +162,4 @@
 </div>
 
 
+    

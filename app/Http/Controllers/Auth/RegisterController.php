@@ -88,7 +88,8 @@ class RegisterController extends Controller
             'province'      => '',
             'postal_code'   => '',
             'country'       => '',
-            'valid_id'      => '',
+            'image'         => '',
+            'image_id'      => '',
         ]); 
 
         return $user;

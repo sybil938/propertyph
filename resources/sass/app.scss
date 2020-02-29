@@ -7,6 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
+body {
+	background-color: #fff;
+}
+
+//PILLS TAB
 .nav-pills .nav-link {
 	background-color: #e0e0e0;
 	margin: 0 5px;
@@ -17,8 +23,8 @@ img {
 	max-width: 100%;
 }
 
+//FORMS
 form {
-
 	small {
 		display: block;
 		color: #3490db;
@@ -28,4 +34,35 @@ form {
 		background-color: #eceff1;
 		padding: 20px;
 	}
+
+	textarea.form-control {
+		min-height: 200px;
+	}
+
+	.error {
+		margin: 5px 0;
+    	color: red;
+	}
 }	
+
+//BUTTONS
+.btn-edit {
+	background-color: #ffc107;
+}
+
+//CAROUSEL
+#carouselProperty {
+	border: 1px solid #ccc;
+}
+
+//CARDS
+.card-title {
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}    
+
+
+
+
+

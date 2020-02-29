@@ -31,6 +31,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
         $apartments   = Apartment::query()->get();
@@ -39,8 +40,6 @@ class HomeController extends Controller
         $houses       = House::query()->get();
         $properties   = Collect($apartments)->merge($condominiums)->merge($dormitories)->merge($houses);
         $types        = Meta::where('type', 'property-type')->get();
-    
-        //dd($properties);
         
         return view('home',compact('properties','types'))->with('ptype');
     }

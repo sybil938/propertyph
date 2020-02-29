@@ -110,40 +110,44 @@
             </div>               
         
             <div class="row pt-5">    
-                @foreach ($properties as $item)
-                    <div class="col-md-4">
-                        <div class="card mb-5">
-                            <?php
-                                $typeName  = '';
-                                foreach($types as $t) {
-                                    if( $item->type == $t->id ) {
-                                        $typeName = $t->value;
+                @if($properties->isNotEmpty())
+                    @foreach ($properties as $item)
+                        <div class="col-md-4">
+                            <div class="card mb-5">
+                                <?php
+                                    $typeName  = '';
+                                    foreach($types as $t) {
+                                        if( $item->type == $t->id ) {
+                                            $typeName = $t->value;
+                                        }
                                     }
-                                }
-                                $imgArray = json_decode($item->images);
-                                $img = head($imgArray);
-                                $imgURL = asset('/storage/'. $typeName .'/'. $item->user_id .'/'. $img);                                
-                            ?>
-                            <div 
-                                {{$item->images}}
-                                class="card-img-top" 
-                                style='
-                                    with:100%; 
-                                    height: 250px; 
-                                    background-image: url("{{ $imgURL }}");
-                                    background-position: center;
-                                    background-size: cover;
-                                    background-repeat: no-repeat;
-                                ;'
-                                ></div>                          
-                            <div class="card-body">
-                                <h4 class="card-title">{{ $item->name }}</h4>
-                                <p class="card-text">{{ $item->ptype->name }}</p>
-                                <a href="#" class="btn btn-primary">view</a>
-                            </div>
+                                    $imgArray = json_decode($item->images);
+                                    $img = reset($imgArray);
+                                    $imgURL = asset('/storage/'. $typeName .'/'. $item->user_id .'/'. $img);  
+                                ?>
+                                <div 
+                                    {{$item->images}}
+                                    class="card-img-top" 
+                                    style='
+                                        with:100%; 
+                                        height: 250px; 
+                                        background-image: url("{{ $imgURL }}");
+                                        background-position: center;
+                                        background-size: cover;
+                                        background-repeat: no-repeat;
+                                    ;'
+                                    ></div>                          
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ $item->name }}</h4>
+                                    <p class="card-text">{{ $item->ptype->name }}</p>
+                                    <a href="{{ url('/properties/'. $item->ptype->value .'/'. $item->id .'/view' ) }}" class="btn btn-primary">view</a>
+                                </div>
+                            </div>    
                         </div>    
-                    </div>    
-                @endforeach
+                    @endforeach
+                @else
+                    @include('dummy.properties')
+                @endif
             </div> 
         </div>
 
